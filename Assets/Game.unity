@@ -442,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9020ac673ab23f64abbd36e7a16d4fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crashDelay: 0.3
 --- !u!1 &794787834
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc42a6560357424092c11525af6e9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finishDelay: 1.3
 --- !u!1 &935542139
 GameObject:
   m_ObjectHideFlags: 0
