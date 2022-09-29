@@ -13,7 +13,8 @@ public class FinishLine : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             finishEffect.Play();
-            Invoke("FinishLevel", finishDelay);
+            GetComponent<AudioSource>().Play();
+            Invoke("FinishLevel", finishDelay);            
         }
     }
 
