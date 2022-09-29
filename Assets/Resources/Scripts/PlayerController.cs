@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     //The component that controls the physics of the player
     private Rigidbody2D rb2d;
     private SurfaceEffector2D surfaceAcellerator;
+    private bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +25,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotatePlayer();
-        RespondToBoost();
+        if (canMove)
+        {
+            RotatePlayer();
+            RespondToBoost();
+        }        
     }
 
+    //Disable player movement (if it crashes for example)
+    public void DisableControls()
+    {
+        surfaceAcellerator.speed = 0;
+        canMove = false;
+    }
+
+    //Increases the speed of the player when is holding the up arrrow
+    //Normal speed otherwise
     private void RespondToBoost()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -40,6 +53,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Roatates the player left and right
     private void RotatePlayer()
     {
         if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A)))
