@@ -9,6 +9,7 @@ public class CrashDetector : MonoBehaviour
     [SerializeField] private ParticleSystem crashEffect;
     [SerializeField] private AudioClip crashSFX;
     private PlayerController playerControl;
+    private bool hasCrashed = false;
 
     void Start()
     {
@@ -19,7 +20,9 @@ public class CrashDetector : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Terrain")
+        //Use a boolean variable so the crash triggered is played once,
+        //even if the player bounces twice before dying
+        if ((collision.tag == "Terrain") && (!hasCrashed))
         {
             //It the player has crashed it can no longer move
             playerControl.DisableControls();
@@ -27,6 +30,7 @@ public class CrashDetector : MonoBehaviour
             //Used to play different audio clips with the same AudioSource
             GetComponent<AudioSource>().PlayOneShot(crashSFX);
             Invoke("ReloadScene", crashDelay);
+            hasCrashed = true;
         }
     }
 
