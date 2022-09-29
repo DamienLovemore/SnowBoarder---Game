@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class CrashDetector : MonoBehaviour
 {
     [SerializeField] float crashDelay;
+    [SerializeField] ParticleSystem crashEffect;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Terrain")
         {
+            crashEffect.Play();
             Invoke("ReloadScene", crashDelay);
         }
     }
