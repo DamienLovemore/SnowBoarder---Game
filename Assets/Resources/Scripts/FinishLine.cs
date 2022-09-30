@@ -7,6 +7,12 @@ public class FinishLine : MonoBehaviour
 {
     [SerializeField] float finishDelay;
     [SerializeField] ParticleSystem finishEffect;
+    private UIHandler uiManager;
+
+    private void Start()
+    {
+        uiManager = FindObjectOfType<UIHandler>();
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +27,6 @@ public class FinishLine : MonoBehaviour
     //Display a message saying that the player has won
     private void FinishLevel()
     {
-        SceneManager.LoadScene(0);
+        uiManager.FinishLevelTrigger();
     }
 }
